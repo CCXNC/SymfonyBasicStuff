@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Branch{% endblock %}
+
+{% block body %}
+    {% apply inline_css %}
+        <style>
+            img { width: 10%; }
+        </style>
+    {% endapply %}    
+    <h1>Branch</h1>
+
+    <table class="table">
+        <tbody>
+             <tr>
+                <th>Image</th>
+                <td><img src="{{ 'http://localhost/sfcourse/public/uploads/' ~ branch.image }}" alt=""></td>
+            </tr>
+        
+            <tr>
+                <th>Id</th>
+                <td>{{ branch.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ branch.name }}</td>
+            </tr>
+            <tr>
+                <th>Oic</th>
+                <td>{{ branch.oic }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ branch.CreatedAt ? branch.CreatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('branch_index') }}">back to list</a>
+
+    <a href="{{ path('branch_edit', {'id': branch.id}) }}">edit</a>
+
+    {{ include('branch/_delete_form.html.twig') }}
+    
+{% endblock %}

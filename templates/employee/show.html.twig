@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee{% endblock %}
+
+{% block body %}
+    <h1>Employee</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employee.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ employee.firstName }}</td>
+            </tr>
+            <tr>
+                <th>MiddleInitial</th>
+                <td>{{ employee.middleInitial }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ employee.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ employee.age }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ employee.address }}</td>
+            </tr>
+            <tr>
+                <th>ContactNumber</th>
+                <td>{{ employee.contactNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn-sm btn-primary" href="{{ path('employee_index') }}">back to list</a>
+
+    <a class="btn-sm btn-primary" href="{{ path('employee_edit', {'id': employee.id}) }}">edit</a>
+
+{% endblock %}

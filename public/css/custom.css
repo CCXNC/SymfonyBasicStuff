@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: century gothic;
+}
+.panel-heading {
+  font-size: 20px;
+}
+
+.float-right {
+  float: right;
+}
+
+
+.float-left {
+  float: left;
+}
+

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee index{% endblock %}
+
+{% block body %}
+    <h1>Employee index</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>MiddleInitial</th>
+                <th>LastName</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>ContactNumber</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.middleInitial }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.age }}</td>
+                <td>{{ employee.address }}</td>
+                <td>{{ employee.contactNumber }}</td>
+                <td>
+                    <a class="btn-sm btn-primary" href="{{ path('employee_show', {'id': employee.id}) }}">show</a>
+                    <a class="btn-sm btn-info" href="{{ path('employee_edit', {'id': employee.id}) }}">edit</a>
+                    <div class="float-right">{{ include('employee/_delete_form.html.twig') }}</div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('employee_new') }}">Create new</a>
+{% endblock %}

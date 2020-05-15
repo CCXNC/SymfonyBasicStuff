@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Posts List
+            <div class="float-right">
+                <a class="btn-sm btn-default" href="{{ path('post.create') }}">Add</a>
+            </div>
+        </div>
+        <div class="panel-body">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% if posts %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in posts %}
+                            <tr>
+                                <td>{{ post.id }}</td>
+                                <td>{{ post.title }}</td>
+                                <td>
+                                    <a class="btn-sm btn-primary"href="{{ path('post.show', { id: post.id })}}">Show</a>
+                                    <a class="btn-sm btn-danger" href="{{ path('post.delete', { id:post.id }) }}">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No post!</p>
+            {% endif %}
+        </div>
+    </div>    
+{% endblock %}

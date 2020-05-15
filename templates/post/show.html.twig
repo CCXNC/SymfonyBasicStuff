@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+   {% apply inline_css %}
+      <style>
+         img { width: 50%; }
+      </style>
+      
+      <h3>{{ post.title }}</h3>
+      <em>{{ post.category }}</em>
+      <hr>
+      <img src="{{ 'http://localhost/sfcourse/public/uploads/' ~ post.image }}" alt="">
+   {% endapply %}
+{% endblock %}
+

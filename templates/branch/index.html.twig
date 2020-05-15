@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Branch index{% endblock %}
+
+{% block body %}
+    <h1>Branch List</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Branch Name</th>
+                <th>OIC</th>
+                <th>Company</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for branch in branches %}
+            <tr>
+                <td>{{ branch.id }}</td>
+                <td>{{ branch.name }}</td>
+                <td>{{ branch.oic }}</td>
+                <td>{{ branch.company.name }}</td>
+                <td>
+                    <a href="{{ path('branch_show', {'id': branch.id}) }}">show</a>
+                    <a href="{{ path('branch_edit', {'id': branch.id}) }}">edit</a>
+                    <a href="{{ path('branch_delete', {'id': branch.id}) }}">delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('branch_new') }}">Create new</a>
+{% endblock %}
